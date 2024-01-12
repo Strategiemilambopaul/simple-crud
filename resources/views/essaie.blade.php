@@ -25,7 +25,7 @@
       <th scope="col">#</th>
       <th scope="col">categories</th>
       <th scope="col">content</th>
-      <th scope="col"><a href="{{route('createCategory')}}" class="badge text-bg-info">create</a></th>
+      <th scope="col"><a href="{{route('createCategory')}}" class="badge text-bg-info"> create </a></th>
   
     </tr>
   </thead>
