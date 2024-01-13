@@ -60,16 +60,16 @@
   </thead>
 
   <tbody>
-   @forelse($articles as $article)
+   @forelse($article as $articles)
 
     <tr>
-      <th scope="row">{{$article->id}}</th>
-      <td>{{$article->nom}}</td>
+      <th scope="row">{{$articles->id}}</th>
+      <td>{{$articles->nom}}</td>
       
-      <!-- <a href="">$article->category->titre</a> -->
+      <!-- <a href="">{{$articles->category->titre}}</a> -->
      
-      <td><i>{{ substr($article->content,0,50)}}...</i></td>
-      <td><i><a href="{{route('delete_article',['id'=>$article->id])}}" class="badge text-bg-danger">delete</a> </i> -- <i><a href="{{route('updateArticle',['id'=>$article->id])}}" class="badge text-bg-success">update</a></i></td>
+      <td><i>{{ substr($articles->content,0,50)}}...</i></td>
+      <td><i><a href="{{route('delete_article',['id'=>$articles->id])}}" class="badge text-bg-danger">delete</a> </i> -- <i><a href="{{route('updateArticle',['id'=>$articles->id])}}" class="badge text-bg-success">update</a></i></td>
     
     </tr>
     @empty

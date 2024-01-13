@@ -15,10 +15,10 @@ class MainController extends Controller
     public function essaie()
     {
         $category=category::with('article')->get();
-        $articles=article::with('category')->get();
+        $article=article::with('category')->get();
         
       
-        return view('essaie', compact(['category','articles']));
+        return view('essaie', compact(['category','article']));
     }
     public function update_category(Request $request )
     {
