@@ -11,6 +11,6 @@ class category extends Model
     protected $fillable=['titre','content'];
     public function article()
     {
-        $this->hasMany(article::class,'category_id');
+        return $this->hasMany(article::class);
     }
 }

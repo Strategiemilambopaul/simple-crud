@@ -14,8 +14,10 @@ class MainController extends Controller
     }
     public function essaie()
     {
-        $category=category::all();
-        $articles=article::all();
+        $category=category::with('article')->get();
+        $articles=article::with('category')->get();
+        
+      
         return view('essaie', compact(['category','articles']));
     }
     public function update_category(Request $request )
@@ -105,7 +107,7 @@ class MainController extends Controller
 
      public function create_article( )
     { 
-        $category= category::all();
+        $category= category::with('article')->get();
         return view('article.createArticle',compact('category'));
         
     }

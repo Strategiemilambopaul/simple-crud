@@ -60,16 +60,21 @@
   </thead>
 
   <tbody>
-   @foreach($articles as $article)
+   @forelse($articles as $article)
 
     <tr>
       <th scope="row">{{$article->id}}</th>
-      <td>{{$article->nom}} </td>
+      <td>{{$article->nom}}</td>
+      
+      <!-- <a href="">$article->category->titre</a> -->
+     
       <td><i>{{ substr($article->content,0,50)}}...</i></td>
       <td><i><a href="{{route('delete_article',['id'=>$article->id])}}" class="badge text-bg-danger">delete</a> </i> -- <i><a href="{{route('updateArticle',['id'=>$article->id])}}" class="badge text-bg-success">update</a></i></td>
     
     </tr>
-    @endforeach
+    @empty
+    <h1 class="badge text-bg-danger"> Aucun article disponible</h1>
+    @endforelse
   </tbody>
 </table>
         @auth
