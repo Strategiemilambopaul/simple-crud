@@ -38,6 +38,7 @@ Route::middleware('auth')->group(function () {
 });
 Route::get('/essaie', [MainController::class, 'essaie'])->name('dashboard');
 Route::get('/create', [MainController::class, 'create'])->name('create');
+Route::get('/category/{id}', [MainController::class, 'see_by_category'])->name('category');
 Route::get('/create/category', [MainController::class, 'create_category'])->name('createCategory');
 Route::post('/create/category', [MainController::class, 'redirectorCategory'])->name('redirectorCategory');
 Route::get('/update/category/{id}', [MainController::class, 'update_category'])->name('updateCategory')->whereNumber('id');

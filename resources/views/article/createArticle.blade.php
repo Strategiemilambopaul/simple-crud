@@ -24,7 +24,7 @@
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="inputCity">picture</label>
+      <label for="photo_path">picture</label>
       <input type="file" class="form-control" name="photo_path">
     </div>
   </div>

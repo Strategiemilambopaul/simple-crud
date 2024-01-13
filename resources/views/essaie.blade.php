@@ -8,6 +8,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 <body>
 
+
 <div class="position-relative mt-4">
   <div class="position-absolute top-50 start-50">
     <h2  class="badge text-bg-secondary" >
@@ -35,7 +36,7 @@
    @foreach($category as $categories)
     <tr>
       <th scope="row">{{$categories->id}}</th>
-      <td>{{$categories->titre}}</td>
+      <td><a href="{{route('category',['id'=>$categories->id])}}" class="badge text-bg-secondary">{{$categories->titre}}</a></td>
       <td><i>{{ substr($categories->content,0,50)}}...</i></td>
       <td><i><a href="{{route('delete_category',['id'=>$categories->id])}}" class="badge text-bg-danger" onclick=confirm("voulez-vous supprimez")>delete</a> </i> -- <i><a href="{{route('updateCategory',['id'=>$categories->id])}}" class="badge text-bg-success">update</a></i></td>
       

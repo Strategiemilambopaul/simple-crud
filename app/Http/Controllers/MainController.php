@@ -57,6 +57,12 @@ class MainController extends Controller
             );   
         return to_route('dashboard');
     }
+    public function see_by_category(Request $request)
+    {
+        $category= category::find($request->id);
+        $articles= article::where('category_id',$request->id)->get();
+        return view('category.itemsByCategory', compact('category','articles'));
+    }
 
     public function delete_category(Request $request)
     {
@@ -73,14 +79,27 @@ class MainController extends Controller
     }
     public function after_updating_article(Request $request)
     {
+        
         $request->validate([
-            'titre'=>['bail','required','min:3','max:15','unique:categories'],
-            'content'=>['bail','required','min:3','max:200']
+            'nom'=>['bail','required','min:3','max:15','unique:articles'],
+            'content'=>['bail','required','min:3','max:200'],
+            'photo_path'=>['bail','required']
         ]);
+
+        $pictureName= time() .'.'. $request->file('photo_path')->extension();
         $article= article::find($request->id);
-        $article->titre=$request->titre;
+       
+        $article->nom=$request->nom;
         $article->content=$request->content;
+        $article->photo_path=$pictureName;
         $article->save();
+         
+       
+        $request->file('photo_path')->storeAs(
+            'photo_items',
+            $pictureName,
+            'public'
+        );
         return to_route('dashboard');
     }
 
@@ -92,33 +111,30 @@ class MainController extends Controller
     }
     public function redirectorArticle(Request $request)
     {
-        // dd($request->file("photo_path"));
-    
+     
         $request->validate([
             'nom'=>['bail','required','min:3','max:15'],
             'content'=>['bail','required','min:3','max:200'],
             'category'=>['required'],
             'photo_path'=>['required']
         ]);
-
-
-        // $request->file('photo_path')->storeAs([
-        //     'photo_items',
-        //     $request->photo_path,
-        //     'public'
-        // ]);
+       
+        $pictureName= time() .'.'. $request->file('photo_path')->extension();
+    
+        $request->file('photo_path')->storeAs(
+            'photo_items',
+            $pictureName,
+            'public'
+        );
 
         article::create(
             [
                 'nom'=>$request->nom,
                 'content'=>$request->content,
                 'category_id'=>$request->category,
-                'photo_path'=>$request->photo_path
+                'photo_path'=> $pictureName
             ]
-            ); 
-        
-       
-        
+        ); 
         return to_route('dashboard');
     }
 
