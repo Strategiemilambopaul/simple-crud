@@ -66,7 +66,7 @@
       <th scope="row">{{$articles->id}}</th>
       <td>{{$articles->nom}}</td>
       
-      <!-- <a href="">{{$articles->category->titre}}</a> -->
+      <a href="">{{$articles->category->titre}}</a>
      
       <td><i>{{ substr($articles->content,0,50)}}...</i></td>
       <td><i><a href="{{route('delete_article',['id'=>$articles->id])}}" class="badge text-bg-danger">delete</a> </i> -- <i><a href="{{route('updateArticle',['id'=>$articles->id])}}" class="badge text-bg-success">update</a></i></td>
