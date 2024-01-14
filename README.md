@@ -30,10 +30,10 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 ## skills
 
 first of all, you gotta know some basics knowledge like :
-> POO : method of programming
-> php : language for backend
-> Relationshit : for being stable with our database
-> blade
-> MVC : pattern template ( model, view and controller)
+- *POO* : method of programming
+- *php* : language for backend
+- *Relationshit* : for being stable with our database
+- *blade*
+- *MVC* : pattern template ( model, view and controller)
 
 
