@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\article;
 use App\Models\category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MainController extends Controller
 {
@@ -14,9 +15,8 @@ class MainController extends Controller
     }
     public function essaie()
     {
-        $category=category::with('article')->get();
-        $article=article::with('category')->get();
-        
+        $category=category::with('article')->simplePaginate(3);
+        $article=article::with('category')->simplePaginate(5);
       
         return view('essaie', compact(['category','article']));
     }
